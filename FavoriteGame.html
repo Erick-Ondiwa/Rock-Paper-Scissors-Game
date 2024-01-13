@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Favorite game</title>
+
+    <link rel="stylesheet" href="FavoriteGame.CSS">
+    <script src="FavoriteGame.JS"></script>
+
+  </head>
+
+  <body>
+   
+    <p>Rock Paper Scissors</p>
+
+    <button class="myButton" onclick="
+    //Calling the function to execute
+    let computerMove = determineComputerMove();
+    let myChoice = computeResult('Rock');
+ 
+    ">Rock</button>
+
+    <button class="myButton" onclick="
+    //Calling the function to execute
+     myChoice = computeResult('Rock');
+     computerMove = determineComputerMove();
+ 
+    ">Paper</button>
+    <button class="myButton" onclick="
+    computerMove = determineComputerMove();
+    myChoice = computeResult('Rock');
+ 
+    ">Scissors</button>
+    <!--This paragraph updates the scores in the document, not in the popup-->
+    <p class="updateScores">My scores</p>
+
+    <button class="myButton" onclick="
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    ">Clear Scores</button>
+    
+  </body>
+</html>
