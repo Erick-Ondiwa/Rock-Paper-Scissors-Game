@@ -10,7 +10,7 @@
 
   <body>
    
-    <p>Rock Paper Scissors</p>
+    <p class="gameTitle">Rock Paper Scissors</p>
 
     <button class="myButton" onclick="
     //Calling the function to execute
@@ -25,18 +25,20 @@
      computerMove = determineComputerMove();
  
     ">Paper</button>
-    <button class="myButton" onclick="
+    <button class="myButton paperButton" onclick="
     computerMove = determineComputerMove();
     myChoice = computeResult('Rock');
+    displayColors();
  
     ">Scissors</button>
     <!--This paragraph updates the scores in the document, not in the popup-->
-    <p class="updateScores">My scores</p>
+    <p class="js-result theResult"></p>
+    <p class="js-moves theMoves"></p>
+    <p class="js-updateScores scoreUpdates"></p>
 
     <button class="myButton" onclick="
-    score.wins = 0;
-    score.losses = 0;
-    score.ties = 0;
+    resetScores();
+    updateScores();
     ">Clear Scores</button>
     
   </body>

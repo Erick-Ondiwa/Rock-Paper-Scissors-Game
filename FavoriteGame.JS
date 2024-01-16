@@ -4,8 +4,7 @@ let score = JSON.parse(localStorage.getItem('score')) ||{
   losses: 0,
   ties: 0
 };
-score = document.querySelector('.updateScores')
-  .innerHTML = `Wins : ${score.wins}, Losses : ${score.losses}, Ties : ${score.ties}`;
+// updateScores();
 
 //A function that computes players's choice
 function computeResult(myChoice){
@@ -44,8 +43,8 @@ function computeResult(myChoice){
       result = 'You tie';
     }
 
-   
   }
+
   //Updating the scores
   if(result === 'You win!'){
     score.wins += 1; 
@@ -57,12 +56,29 @@ function computeResult(myChoice){
   //Saving the scores in local storage
   localStorage.setItem('score', JSON.stringify(score));
 
+  updateScores();
+
+  document.querySelector('.js-result')
+    .innerHTML = result;
+    
+    document.querySelector('.js-moves')
+      .innerHTML = `You ${myChoice} - ${computerMove} computer`;
+
     //Displaying the results and the scores in a popup
-    alert(`You picked ${myChoice}, computer picked ${computerMove} therefore ${result}.
-Wins : ${score.wins}, Losses : ${score.losses}, Ties : ${score.ties}`);
+ 
+}
+
+function updateScores(){
+  document.querySelector('.js-updateScores')
+    .innerHTML = `Wins : ${score.wins}, Losses : ${score.losses}, Ties : ${score.ties}`;
 
 }
 
+function resetScores(){
+  score.wins = 0;
+  score.losses = 0;
+  score.ties = 0;
+}
 
 //This function computes the computer move and returns the move
 function determineComputerMove(){
@@ -78,7 +94,23 @@ function determineComputerMove(){
   }else if(2/3 < randomNumber && randomNumber < 1){
     computerMove = 'Scissors';
   }
-
+  
   return computerMove;
 
 }
+
+(function displayColors(){
+  let colors = ['Red', 'Green','Blue', 'yellow'];
+  let i = 0;
+  // for(let i =0; i < colors.length;){
+  //   document.querySelector('.paperButton').innerHTML=i;
+  // }
+
+  setInterval(() => {
+    i++;
+    document.querySelector('.paperButton').style.color = colors[i];
+    if(i === colors.length){
+      i = -1;
+    }
+  }, 200);
+})();
